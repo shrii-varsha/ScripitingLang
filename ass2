@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Validation</title>
+    <script src="validate.js"></script>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Enter a four-digit number">
+    <button onclick="validateNumber()">Validate</button>
+    <p id="result"></p>
+</body>
+</html>
+
+
+JAVASCRIPT
+function validateNumber() {
+    let number = document.getElementById("numberInput").value;
+    let result = document.getElementById("result");
+
+    // Check if number has 4 digits and does not start with zero
+    if (!/^[1-9]\d{3}$/.test(number)) {
+        result.textContent = "Number must be a four-digit number with no zero at the beginning.";
+        return;
+    }
+
+    // Check if digits are in ascending order
+    for (let i = 0; i < number.length - 1; i++) {
+        if (number[i] >= number[i + 1]) {
+            result.textContent = "Digits must be in ascending order.";
+            return;
+        }
+    }
+
+    result.textContent = "Number is valid.";
+}
