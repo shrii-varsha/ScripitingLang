@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Gallery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #gallery img {
+            width: 100px;
+            opacity: 0;
+            transition: width 0.5s, opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="gallery">
+        <img src="image1.jpg" alt="Image 1">
+        <img src="image2.jpg" alt="Image 2">
+    </div>
+    <button id="animateButton">Animate Image</button>
+
+    <script src="animate.js"></script>
+</body>
+</html>
+
+
+#JavaScript 
+
+javascript
+Copy code
+$(document).ready(function() {
+    $("#animateButton").click(function() {
+        $("#gallery img").each(function() {
+            $(this).animate({
+                opacity: 1,
+                width: "300px"
+            }, 1000);
+        });
+    });
+});
