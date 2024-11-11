@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Validation</title>
+    <script src="validate.js"></script>
+</head>
+<body>
+    <input type="text" id="numberInput" placeholder="Enter a four-digit number">
+    <button onclick="validateNumber()">Validate</button>
+    <p id="result"></p>
+</body>
+</html>
