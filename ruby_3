@@ -1,0 +1,29 @@
+# @param {Integer} n
+# @param {Integer[][]} edges
+# @return {Integer[][]}
+def get_ancestors(n, edges)
+  adjacency = Hash[(0...n).map { [_1, []] }]
+
+  edges.each do |from, to|
+    adjacency[to] << from
+  end
+
+  dfs = lambda do |current_node, visited|
+    visited.add(current_node)
+    adjacency[current_node].each do |neighbour|
+      next if visited.include?(neighbour)
+
+      dfs.call(neighbour, visited)
+    end
+  end
+
+  results = []
+
+  n.times do |node|
+    visited = Set.new
+    dfs.call(node, visited)
+    results << (visited.to_a - [node]).sort
+  end
+
+  results
+end
