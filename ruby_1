@@ -1,0 +1,3 @@
+# @param {Character[][]} box
+# @return {Character[][]}
+def rotate_the_box(b)=b.map{|r|r.chunk{|x|x==?*}.flat_map{_2.sort.reverse}}.reverse.transpose
