@@ -1,0 +1,17 @@
+# @param {Integer} n
+# @param {Integer[][]} roads
+# @return {Integer}
+def maximum_importance(n, roads)
+  adjacency = {}
+
+  n.times { |i| adjacency[i] = [] }
+
+  roads.each do |from, to|
+    adjacency[from] << to
+    adjacency[to] << from
+  end
+
+  weight = adjacency.sort_by { _2.length }.map.with_index { |a, i| [a[0], i + 1] }.to_h
+
+  roads.sum { |from, to| weight[from] + weight[to] }
+end
